@@ -42,7 +42,7 @@ def index(request):
 import requests
 
 def get_weekly_forecast(city):
-    appid = 'YOUR_API_KEY'  # Замените YOUR_API_KEY на ваш ключ API от OpenWeatherMap
+    appid = 'YOUR_API_KEY'  
     url = f'https://api.openweathermap.org/data/2.5/forecast?q={city}&units=metric&appid={appid}'
 
     response = requests.get(url)
@@ -52,12 +52,11 @@ def get_weekly_forecast(city):
     else:
         return None
 
-# Пример использования функции
-city = 'Almaty'  # Замените на нужный вам город
+
+city = 'Almaty'  
 weekly_forecast = get_weekly_forecast(city)
 
 if weekly_forecast:
-    # Обработайте данные прогноза, например, выведите температуру на следующую неделю
     for forecast in weekly_forecast['list']:
         date_time = forecast['dt_txt']
         temperature = forecast['main']['temp']
